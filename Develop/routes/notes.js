@@ -6,14 +6,14 @@ const uuid = require('../helpers/uuid');
 
 // GET Route for retrieving all the notes
 notes.get('/', (req,res) => {
-    alert(`${req.method} request received `);
+    console.log(`${req.method} request received `);
     
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 
 notes.post('/', (req, res) => {
-    alert(`${req.method} request received`);
+    console.log(`${req.method} request received`);
     let{ text, title } = req.body;
 
     
@@ -40,7 +40,7 @@ notes.post('/', (req, res) => {
 });
 
 notes.delete('/:id', (req, res) => {
-    alert(`${req.method} request received`);
+    console.log(`${req.method} request received`);
     let { id } = req.params;
     let notes = readFromFile('./db/db.json');
     let newNotes = notes.filter((note) => note.id !== id);
